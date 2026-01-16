@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F469B483-737A-4B7F-A60E-E74B7FC58797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevHabit.Api", "DevHabit.Api\DevHabit.Api.csproj", "{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F388AD8B-2412-4795-84EA-202046B25282}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D} = {F469B483-737A-4B7F-A60E-E74B7FC58797}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DC3188-B9D2-4DE2-AEA5-EE6CFDFE586D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "pcIXlrLdgfE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hp\\RiderProjects\\DevHabit\\DevHabit.Api\\DevHabit.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.1\\microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\sonaranalyzer.csharp\\10.18.0.131500\\sonaranalyzer.csharp.10.18.0.131500.nupkg.sha512"
+  ],
+  "logs": []
+}
