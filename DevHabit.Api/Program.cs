@@ -10,8 +10,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options
     => options.UseNpgsql(builder.Configuration.GetConnectionString("Database"),
-            npgsqlOptions 
-                => npgsqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName,Schemas.Application))
+            npgsqlOptions
+                => npgsqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Application))
         .UseSnakeCaseNamingConvention());
 
 builder.Services.AddOpenTelemetry()
@@ -30,7 +30,6 @@ builder.Logging.AddOpenTelemetry(options =>
 {
     options.IncludeScopes = true;
     options.IncludeFormattedMessage = true;
-    options.AddOtlpExporter();
 });
 
 
