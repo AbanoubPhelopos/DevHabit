@@ -1,0 +1,12 @@
+global using DevHabit.Infrastructure.Database;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using DevHabit.Api.Extensions;
+global using DevHabit.Infrastructure.Database;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using OpenTelemetry.Metrics;
+global using OpenTelemetry.Resources;
+global using OpenTelemetry.Trace;
+global using OpenTelemetry.Logs;
+

@@ -1,8 +1,5 @@
+using Npgsql;
 using OpenTelemetry;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Logs;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -11,17 +8,23 @@ builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddDbContext<ApplicationDbContext>(options
+    => options.UseNpgsql(builder.Configuration.GetConnectionString("Database"),
+            npgsqlOptions 
+                => npgsqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName,Schemas.Application))
+        .UseSnakeCaseNamingConvention());
+
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(resource => resource.AddService(builder.Environment.ApplicationName))
     .WithTracing(tracing => tracing
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
-        .AddOtlpExporter())
+        .AddNpgsql())
     .WithMetrics(matrics => matrics
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
-        .AddRuntimeInstrumentation()
-        .AddOtlpExporter());
+        .AddRuntimeInstrumentation())
+    .UseOtlpExporter();
 
 builder.Logging.AddOpenTelemetry(options =>
 {
@@ -36,6 +39,7 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    await app.ApplyMigrationsAsync();
 }
 
 app.UseHttpsRedirection();

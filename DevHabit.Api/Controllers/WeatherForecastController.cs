@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace DevHabit.Api.Controllers;
 
 [ApiController]
