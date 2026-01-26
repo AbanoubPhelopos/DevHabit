@@ -11,3 +11,4 @@ global using Npgsql;
 global using OpenTelemetry;
 global using DevHabit.Domain.Entities;
 global using Microsoft.AspNetCore.JsonPatch;
+global using DevHabit.Application.DTOs.Tags;
