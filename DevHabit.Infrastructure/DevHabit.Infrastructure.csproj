@@ -6,6 +6,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+      <NuGetAudit>false</NuGetAudit>
+      <NoWarn>$(NoWarn);NU1900</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\DevHabit.Application\DevHabit.Application.csproj" />
     </ItemGroup>
