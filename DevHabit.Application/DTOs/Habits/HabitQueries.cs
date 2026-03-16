@@ -29,4 +29,33 @@ public static class HabitQueries
             LastCompletedAtUtc:h.LastCompletedAtUtc
         );
     }
+    
+    public static Expression<Func<Habit, HabitDtoWithTags>> ProjectToDtoWithTags()
+    {
+        return h=> new HabitDtoWithTags(
+            Id:h.Id,
+            Name:h.Name,
+            Description:h.Description,
+            Type:h.Type,
+            Frequency:new FrequencyDto(
+                FrequencyType:h.Frequency.FrequencyType,
+                TimesPerPeriod:h.Frequency.TimesPerPeriod
+            ),
+            Targets:new TargetDto(
+                Value:h.Targets.Value,
+                Units:h.Targets.Units
+            ),
+            Status:h.Status,
+            IsArchived:h.IsArchived,
+            EndDate:h.EndDate,
+            Milestone:h.Milestone == null ? null : new MilestoneDto(
+                Target:h.Milestone.Target,
+                Current:h.Milestone.Current
+            ),
+            CreatedAtUtc:h.CreatedAtUtc,
+            UpdatedAtUtc:h.UpdatedAtUtc,
+            LastCompletedAtUtc:h.LastCompletedAtUtc,
+            Tags: h.Tags.Select(t=>t.Name).ToList()
+        );
+    }
 }

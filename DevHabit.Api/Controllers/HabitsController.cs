@@ -17,11 +17,11 @@ public sealed class HabitsController(ApplicationDbContext dbContext) : Controlle
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<HabitDto>> GetHabit(string id, CancellationToken cancellationToken)
+    public async Task<ActionResult<HabitDtoWithTags>> GetHabit(string id, CancellationToken cancellationToken)
     {
-        HabitDto habit = await dbContext.Habits
+        HabitDtoWithTags habit = await dbContext.Habits
             .Where(h => h.Id == id)
-            .Select(HabitQueries.ProjectToDto())
+            .Select(HabitQueries.ProjectToDtoWithTags())
             .FirstOrDefaultAsync(cancellationToken);
 
         if (habit == null) 
@@ -59,7 +59,7 @@ public sealed class HabitsController(ApplicationDbContext dbContext) : Controlle
         
         return NoContent();
     }
-    
+   
     [HttpPatch("{id}")]
     public async Task<ActionResult> PatchHabit(string id, [FromBody] JsonPatchDocument<HabitDto> patchDoc, CancellationToken cancellationToken)
     {

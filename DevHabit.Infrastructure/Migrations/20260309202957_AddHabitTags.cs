@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DevHabit.Infrastructure.Migrations
-{
+namespace DevHabit.Infrastructure.Migrations;
+
     /// <inheritdoc />
     public partial class AddHabitTags : Migration
     {
@@ -136,4 +136,4 @@ namespace DevHabit.Infrastructure.Migrations
                 schema: "dev_habit");
         }
     }
-}
+

@@ -31,6 +31,28 @@ public sealed record HabitDto
 );
 
 
+public sealed record HabitDtoWithTags
+(
+    string Id,
+    string Name,
+    string? Description,
+    
+    HabitType  Type,
+    FrequencyDto Frequency,
+    TargetDto Targets,
+    HabitStatus Status,
+    
+    bool IsArchived,
+    
+    DateOnly EndDate,
+    MilestoneDto? Milestone,
+    
+    DateTime CreatedAtUtc,
+    DateTime UpdatedAtUtc,
+    
+    DateTime LastCompletedAtUtc,
+    List<string> Tags
+);
 
 public sealed record FrequencyDto
 (
