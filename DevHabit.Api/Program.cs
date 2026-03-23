@@ -2,6 +2,8 @@ using DevHabit.Api.Controllers;
 using DevHabit.Application.Contracts.Repositories;
 using DevHabit.Application.Contracts.UnitOfWork;
 using DevHabit.Application.Interfaces;
+using DevHabit.Application.Services;
+using DevHabit.Application.Services.Abstractions;
 using DevHabit.Infrastructure.Database;
 using DevHabit.Infrastructure.Repositories;
 using DevHabit.Infrastructure.Services;
@@ -34,6 +36,8 @@ builder.Services.AddScoped<IAuditLogService, AuditLogService>();
 builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<RequestScopedService>();
+builder.Services.AddScoped<IHabitService, HabitService>();
+builder.Services.AddScoped<ITagService, TagService>();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(resource => resource.AddService(builder.Environment.ApplicationName))
