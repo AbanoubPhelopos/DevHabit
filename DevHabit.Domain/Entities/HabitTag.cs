@@ -2,7 +2,10 @@ namespace DevHabit.Domain.Entities;
 
 public sealed class HabitTag
 {
-    public string HabitId { get; set; }    
-    public string TagId { get; set; }
-    public DateTime? CreatedAt { get; set; }
+    public string HabitId { get; set; } = string.Empty;    
+    public string TagId { get; set; } = string.Empty;
+    public DateTime CreatedAtUtc { get; set; }
+    
+    public Habit Habit { get; set; } = null!;
+    public Tag Tag { get; set; } = null!;
 }

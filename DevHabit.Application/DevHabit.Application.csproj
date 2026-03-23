@@ -10,4 +10,8 @@
       <ProjectReference Include="..\DevHabit.Domain\DevHabit.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    </ItemGroup>
+
 </Project>

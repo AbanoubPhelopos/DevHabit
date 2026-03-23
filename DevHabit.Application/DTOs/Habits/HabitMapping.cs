@@ -51,7 +51,7 @@ public static class HabitMapping
             },
             Status = HabitStatus.OnGoing,
             IsArchived = false,
-            EndDate = createHabitDto.EndDate,
+            EndDate = createHabitDto.EndDate ?? DateOnly.MaxValue,
             Milestone = createHabitDto.Milestone == null ? null : new Milestone
             {
                 Target = createHabitDto.Milestone.Target,

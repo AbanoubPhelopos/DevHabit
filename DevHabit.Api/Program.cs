@@ -1,3 +1,5 @@
+using FluentValidation;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(options =>
@@ -5,6 +7,9 @@ builder.Services.AddControllers(options =>
         options.ReturnHttpNotAcceptable = true;
     }).AddNewtonsoftJson()
     .AddXmlSerializerFormatters();
+
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
 
 builder.Services.AddOpenApi();
 

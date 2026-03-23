@@ -25,7 +25,7 @@ public sealed record HabitDto
     MilestoneDto? Milestone,
     
     DateTime CreatedAtUtc,
-    DateTime UpdatedAtUtc,
+    DateTime? UpdatedAtUtc,
     
     DateTime LastCompletedAtUtc
 );
@@ -48,7 +48,7 @@ public sealed record HabitDtoWithTags
     MilestoneDto? Milestone,
     
     DateTime CreatedAtUtc,
-    DateTime UpdatedAtUtc,
+    DateTime? UpdatedAtUtc,
     
     DateTime LastCompletedAtUtc,
     List<string> Tags
