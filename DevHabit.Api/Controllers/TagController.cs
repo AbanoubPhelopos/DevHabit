@@ -1,3 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using ValidationResult = FluentValidation.Results.ValidationResult;
+
 namespace DevHabit.Api.Controllers;
 
 [ApiController]
@@ -33,10 +38,23 @@ public class TagController(ApplicationDbContext dbContext) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateTag([FromBody] CreateTagDto createTagDto)
+    public async Task<ActionResult> CreateTag([FromBody] CreateTagDto createTagDto,
+        IValidator<CreateTagDto> validator,
+        ProblemDetailsFactory problemDetailsFactory, CancellationToken cancellationToken)
     {
+
+        ValidationResult validationResult = await validator.ValidateAsync(createTagDto,cancellationToken);
+        
+        if(!validationResult.IsValid)
+        {
+            ProblemDetails problems = problemDetailsFactory.CreateProblemDetails(HttpContext,
+                StatusCodes.Status400BadRequest);
+            
+            return BadRequest(problems);
+        }
+        
         Tag existingTag = await dbContext.Tags
-            .FirstOrDefaultAsync(t => t.Name == createTagDto.Name);
+            .FirstOrDefaultAsync(t => t.Name == createTagDto.Name, cancellationToken);
         
         if (existingTag != null)
         {
@@ -46,7 +64,7 @@ public class TagController(ApplicationDbContext dbContext) : ControllerBase
         Tag tag = createTagDto.ToEntity();
         
         dbContext.Tags.Add(tag);
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync(cancellationToken);
         
         TagDto tagDto = tag.ToDto();
         return CreatedAtAction(nameof(GetTag), new { id = tag.Id }, tagDto);

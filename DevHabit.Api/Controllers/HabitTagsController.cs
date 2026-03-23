@@ -43,7 +43,7 @@ public class HabitTagsController(ApplicationDbContext dbContext) : ControllerBas
         {
             HabitId = habitId,
             TagId = tagId,
-            CreatedAt =  DateTime.UtcNow
+            CreatedAtUtc =  DateTime.UtcNow
         }));
             
         await _dbContext.SaveChangesAsync(cancellationToken);

@@ -10,7 +10,7 @@ public sealed record CreateHabitDto(
     FrequencyDto Frequency,
     TargetDto Targets,
     
-    DateOnly EndDate,
+    DateOnly? EndDate,
     MilestoneDto? Milestone
 
     );

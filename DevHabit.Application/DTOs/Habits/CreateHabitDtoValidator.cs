@@ -1,7 +1,6 @@
-﻿using DevHabit.Api.Entities;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace DevHabit.Api.DTOs.Habits;
+namespace DevHabit.Application.DTOs.Habits;
 
 public sealed class CreateHabitDtoValidator : AbstractValidator<CreateHabitDto>
 {
@@ -30,7 +29,7 @@ public sealed class CreateHabitDtoValidator : AbstractValidator<CreateHabitDto>
             .WithMessage("Invalid habit type");
 
         // Frequency validation
-        RuleFor(x => x.Frequency.Type)
+        RuleFor(x => x.Frequency.FrequencyType)
             .IsInEnum()
             .WithMessage("Invalid frequency period");
 
@@ -39,11 +38,11 @@ public sealed class CreateHabitDtoValidator : AbstractValidator<CreateHabitDto>
             .WithMessage("Frequency must be greater than 0");
 
         // Target validation
-        RuleFor(x => x.Target.Value)
+        RuleFor(x => x.Targets.Value)
             .GreaterThan(0)
             .WithMessage("Target value must be greater than 0");
 
-        RuleFor(x => x.Target.Unit)
+        RuleFor(x => x.Targets.Units)
             .NotEmpty()
             .Must(unit => AllowedUnits.Contains(unit.ToLowerInvariant()))
             .WithMessage($"Unit must be one of: {string.Join(", ", AllowedUnits)}");
@@ -62,7 +61,7 @@ public sealed class CreateHabitDtoValidator : AbstractValidator<CreateHabitDto>
         });
 
         // Complex rules
-        RuleFor(x => x.Target.Unit)
+        RuleFor(x => x.Targets.Units)
             .Must((dto, unit) => IsTargetUnitCompatibleWithType(dto.Type, unit))
             .WithMessage("Target unit is not compatible with the habit type");
     }

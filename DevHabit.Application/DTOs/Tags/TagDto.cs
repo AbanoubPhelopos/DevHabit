@@ -10,5 +10,5 @@ public sealed record TagDto(
     string Name,
     string Description,
     DateTime CreatedAtUtc,
-    DateTime UpdatedAtUtc
+    DateTime? UpdatedAtUtc
 );
